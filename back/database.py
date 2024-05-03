@@ -1,7 +1,16 @@
 import sqlite3
+from sqlite3 import Error
 
-conn = sqlite3.connect('game_sphere.db')
-cursor = conn.cursor()
+connection = sqlite3.connect('back/game_sphere.db')
+cursor = connection.cursor()
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS ADMINS (
+        id INTEGER PRIMARY KEY,
+        nom_utilisateur TEXT UNIQUE NOT NULL,
+        mot_de_passe TEXT NOT NULL
+    )
+''')
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS JEUX (
@@ -41,13 +50,5 @@ cursor.execute('''
     )
 ''')
 
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS ADMINS (
-        id INTEGER PRIMARY KEY,
-        nom_utilisateur TEXT UNIQUE NOT NULL,
-        mot_de_passe TEXT NOT NULL
-    )
-''')
-
-conn.commit()
-conn.close()
+connection.commit()
+connection.close()
