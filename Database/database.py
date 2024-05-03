@@ -1,7 +1,7 @@
 import sqlite3
 from sqlite3 import Error
 
-connection = sqlite3.connect('back/game_sphere.db')
+connection = sqlite3.connect('Database/game_sphere.db')
 cursor = connection.cursor()
 
 cursor.execute('''
@@ -10,7 +10,7 @@ cursor.execute('''
         nom_utilisateur TEXT UNIQUE NOT NULL,
         mot_de_passe TEXT NOT NULL
     )
-''')
+''')   
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS JEUX (
