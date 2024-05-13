@@ -50,5 +50,14 @@ cursor.execute('''
     )
 ''')
 
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS JEUX_USERS (
+        user_id INTEGER,
+        game_id INTEGER,
+        FOREIGN KEY(user_id) REFERENCES UTILISATEURS(id)
+        FOREIGN KEY(game_id) REFERENCES JEUX(id)
+    )
+''')
+
 connection.commit()
 connection.close()
