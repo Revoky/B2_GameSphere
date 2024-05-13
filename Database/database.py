@@ -10,18 +10,6 @@ cursor.execute('''
         nom_utilisateur TEXT UNIQUE NOT NULL,
         mot_de_passe TEXT NOT NULL
     )
-''')   
-
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS JEUX (
-        id INTEGER PRIMARY KEY,
-        image TEXT,
-        nom TEXT NOT NULL,
-        prix REAL NOT NULL,
-        note_moyenne REAL,
-        avis_utilisateur TEXT,
-        quantite INTEGER
-    )
 ''')
 
 cursor.execute('''
@@ -34,6 +22,18 @@ cursor.execute('''
         date_naissance TEXT,
         solde REAL DEFAULT 0,
         num_facture INTEGER
+    )
+''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS JEUX (
+        id INTEGER PRIMARY KEY,
+        image TEXT,
+        nom TEXT NOT NULL,
+        prix REAL NOT NULL,
+        note_moyenne REAL,
+        avis_utilisateur TEXT,
+        quantite INTEGER
     )
 ''')
 
