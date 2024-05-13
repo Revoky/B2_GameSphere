@@ -97,8 +97,7 @@ def delete_user(id):
 
 
 
-
-connection.close()
-
 if __name__ == '__main__':
     app.run(debug=True)
+
+connection.close()
