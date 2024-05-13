@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Logo">
+</header>
+
+<div class="container">
+    <h2>Register</h2>
+    <form action="/register" method="post">
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        <input type="submit" value="Register">
+    </form>
+    <a href="/login" class="login">Already have an account? Login here</a>
+</div>
+
+<footer>
+    <p>Copyright © 2024. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
