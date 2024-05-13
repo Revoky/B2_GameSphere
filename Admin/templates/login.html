@@ -3,19 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <script src="https://kit.fontawesome.com/bf58ec26bb.js" crossorigin="anonymous"></script>
+    <title>GameSphere - Connexion admin</title>
 </head>
 
 <body>
-    <h1>Connexion</h1>
+    <header>
+        <a href="/admin/index">
+            <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
+        </a> 
+    </header>
+    
+    <main>
+        <h1>Connexion</h1>
 
-    <form action="/checkID" method="POST">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Login">
-    </form>
+        <i class="fa-brands fa-meta"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-square-reddit"></i>
+
+        <form action="/checkID" method="POST">
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required><br>
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required><br><br>
+            <input type="submit" value="Login">
+        </form>
+    </main>
+
+    <footer>
+        <ul>
+            <li>
+                <a href="#">Mentions légales</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+            <li>
+                <a href="#">A propos de GameSphere</a>
+            </li>
+        </ul>
+    </footer>
 </body>
 
 </html>
