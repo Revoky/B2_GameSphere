@@ -4,8 +4,8 @@ import sqlite3
 app = Flask(__name__)
 
 def get_db_connection():
-    conn = sqlite3.connect('back/game_sphere.db')
-    conn.row_factory = sqlite3.Row  # Allows to use column names as keys
+    conn = sqlite3.connect('../game_sphere.db')
+    conn.row_factory = sqlite3.Row
     return conn
 
 # Récupérer jeux

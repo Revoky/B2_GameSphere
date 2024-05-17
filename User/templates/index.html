@@ -29,7 +29,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('Document is ready');  //Debug
         fetch('/api/jeux')
             .then(response => {
                 if (!response.ok) {
