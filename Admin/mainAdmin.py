@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, g
+from flask import Flask, render_template, request, redirect, session, g, jsonify
 import sqlite3
 
 app = Flask(__name__)
@@ -10,6 +10,11 @@ def get_db():
     if db is None:
         db = g._database = sqlite3.connect(app.database)
     return db
+
+def get_db_connection():
+    conn = sqlite3.connect('../game_sphere.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -27,6 +32,21 @@ def getAdminData(username):
     except sqlite3.Error as e:
         print("Error fetching admin id:", e)
         return None
+
+#('/api/utilisateurs', methods=['GET'])
+def get_utilisateurs():
+    try:
+        cur = get_db().cursor()
+        cur.execute('SELECT * FROM UTILISATEURS')
+        rows = cur.fetchall()
+        cur.close()
+
+        # Assuming your table has columns id and name
+        utilisateurs = [{'id': row[0], 'name': row[1]} for row in rows]
+        return jsonify(utilisateurs)
+    except Exception as e:
+        print('Error fetching users:', e)
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 @app.route('/checkID', methods=['POST'])
 def my_link():
@@ -48,6 +68,23 @@ def my_link():
 @app.route('/admin/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
+
+@app.route('/admin/users', methods=['GET'])
+def get_users():
+    return render_template('users.html')
+
+# Récupérer utilisateurs
+@app.route('/api/utilisateurs', methods=['GET'])
+def get_users_api():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM UTILISATEURS')
+        users = cursor.fetchall()
+        conn.close()
+        return jsonify([dict(ix) for ix in users])
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/admin/index')
 def admin_index():

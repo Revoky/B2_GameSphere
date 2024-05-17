@@ -1,5 +1,6 @@
 import sqlite3
 from sqlite3 import Error
+import new
 
 connection = sqlite3.connect('../game_sphere.db')
 cursor = connection.cursor()
@@ -58,6 +59,14 @@ cursor.execute('''
         FOREIGN KEY(game_id) REFERENCES JEUX(id)
     )
 ''')
+
+cursor.execute('''INSERT INTO UTILISATEURS (prenom, nom, mot_de_passe, mail, date_naissance) VALUES
+("Amanda", "Armsmith", "abcABC", "a@gmail.com", "10/10/10"),
+("Bea", "Bumblebee", "bcdBCD", "b@gmail.com", "10/10/10"),
+("Cyril", "Cyno", "cdeCDE", "c@gmail.com", "10/10/10"),
+("David", "Dande", "defDEF", "d@gmail.com", "10/10/10")
+''')
+
 
 connection.commit()
 connection.close()
