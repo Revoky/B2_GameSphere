@@ -1,10 +1,7 @@
 import sqlite3
 
-connection = sqlite3.connect('../Database/game_sphere.db')
+connection = sqlite3.connect('../game_sphere.db')
 cursor = connection.cursor()
-
-#username = 'admin'
-#password = 'admin123'
 
 def newAdmin(username, password) :
     try:
@@ -44,4 +41,5 @@ def newBill(user_id, game_name, game_price, old_balance, new_balance, bill_date)
     except sqlite3.Error as e:
         print("Erreur lors de l'insertion des données:", e)
 
+cursor.close()
 connection.close()

@@ -1,7 +1,7 @@
 import sqlite3
 from sqlite3 import Error
 
-connection = sqlite3.connect('Database/game_sphere.db')
+connection = sqlite3.connect('../game_sphere.db')
 cursor = connection.cursor()
 
 cursor.execute('''
