@@ -25,7 +25,47 @@
     </form>
 </div>
 
+<div id="games-container"></div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Document is ready');  //Debug
+        fetch('/api/jeux')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(games => {
+                console.log('Games data received:', games);  //Debug
+                const gamesContainer = document.getElementById('games-container');
+                gamesContainer.innerHTML = ''; 
+                if (games.length === 0) {
+                    gamesContainer.innerHTML = '<p>No games found.</p>';
+                } else {
+                    games.forEach(game => {
+                        const gameDiv = document.createElement('div');
+                        gameDiv.className = 'game';
+                        gameDiv.innerHTML = `
+                            <img src="${game.image}" alt="${game.nom}">
+                            <h3>${game.nom}</h3>
+                            <p>Prix: ${game.prix} €</p>
+                            <p>Note Moyenne: ${game.note_moyenne}</p>
+                            <p>Avis Utilisateur: ${game.avis_utilisateur}</p>
+                            <p>Quantité Disponible: ${game.quantite}</p>
+                        `;
+                        gamesContainer.appendChild(gameDiv);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching games:', error);  //Debug
+                const gamesContainer = document.getElementById('games-container');
+                gamesContainer.innerHTML = '<p>Failed to load games.</p>';
+            });
+    });
+</script>
 
 </body>
 </html>
