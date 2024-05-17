@@ -28,42 +28,32 @@
 <div id="games-container"></div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    function fetchGames() {
         fetch('/api/jeux')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(games => {
-                console.log('Games data received:', games);  //Debug
+            .then(response => response.json())
+            .then(data => {
                 const gamesContainer = document.getElementById('games-container');
-                gamesContainer.innerHTML = ''; 
-                if (games.length === 0) {
-                    gamesContainer.innerHTML = '<p>No games found.</p>';
-                } else {
-                    games.forEach(game => {
-                        const gameDiv = document.createElement('div');
-                        gameDiv.className = 'game';
-                        gameDiv.innerHTML = `
+                
+                gamesContainer.innerHTML = '';
+
+                data.forEach(game => {
+                    const gameElement = document.createElement('div');
+                    gameElement.innerHTML = `
+                        <div class="game">
                             <img src="${game.image}" alt="${game.nom}">
-                            <h3>${game.nom}</h3>
-                            <p>Prix: ${game.prix} €</p>
-                            <p>Note Moyenne: ${game.note_moyenne}</p>
-                            <p>Avis Utilisateur: ${game.avis_utilisateur}</p>
-                            <p>Quantité Disponible: ${game.quantite}</p>
-                        `;
-                        gamesContainer.appendChild(gameDiv);
-                    });
-                }
+                            <h2>${game.nom}</h2>
+                            <p>Prix: ${game.prix}</p>
+                            <p>Note moyenne: ${game.note_moyenne}</p>
+                            <p>Avis: ${game.avis_utilisateur}</p>
+                        </div>
+                    `;
+                    gamesContainer.appendChild(gameElement);
+                });
             })
-            .catch(error => {
-                console.error('Error fetching games:', error);  //Debug
-                const gamesContainer = document.getElementById('games-container');
-                gamesContainer.innerHTML = '<p>Failed to load games.</p>';
-            });
-    });
+            .catch(error => console.error('Erreur lors de la récupération des jeux:', error));
+    }
+
+    fetchGames();
 </script>
 
 </body>
