@@ -21,8 +21,7 @@ cursor.execute('''
         image TEXT,
         mail TEXT UNIQUE NOT NULL,
         date_naissance TEXT,
-        solde REAL DEFAULT 0,
-        num_facture INTEGER
+        solde REAL DEFAULT 0
     )
 ''')
 
@@ -53,8 +52,7 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS FACTURES (
         id INTEGER PRIMARY KEY,
         id_game_user INTEGER,
-        nom_jeu TEXT,
-        prix_jeu REAL,
+        total REAL,
         ancien_solde REAL,
         nouveau_solde REAL,
         date_facture TEXT,
