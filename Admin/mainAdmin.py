@@ -3,10 +3,10 @@ import sqlite3
 
 app = Flask(__name__)
 app.secret_key = '7s3p3uBZ'
-app.database = '../Database/game_sphere.db'
+app.database = '../game_sphere.db'
 
 def get_db():
-    db = getattr(g, '_database', None)
+    db = getattr(g, '../Database/game_sphere.db', None)
     if db is None:
         db = g._database = sqlite3.connect(app.database)
     return db

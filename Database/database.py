@@ -74,6 +74,10 @@ cursor.execute('''INSERT INTO JEUX (nom, prix, note_moyenne, quantite) VALUES
 ("Dandy Boy", 8.00, 4.0, 61)
 ''')
 
+cursor.execute('''INSERT INTO ADMINS (nom_utilisateur, mot_de_passe) VALUES
+("administrateur", "admin")
+''')
+
 
 connection.commit()
 connection.close()
