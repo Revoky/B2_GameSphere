@@ -16,12 +16,19 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Rows will be added here by JavaScript -->
+            {% for user in users %}
+            <tr>
+                <td>{{ user['prenom'] }}</td>
+                <td>{{ user['nom'] }}</td>
+                <td>{{ user['mail'] }}</td>
+                <td>{{ user['date_naissance'] }}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
     <script>
-        // Fetch data from the Flask get_users route
+        /*// Fetch data from the Flask get_users route
         fetch('/api/utilisateurs') // Replace '/get_users' with your actual route
             .then(response => response.json())
             .then(data => {
@@ -49,7 +56,7 @@
                     tableBody.appendChild(row);
                 });
             })
-            .catch(error => console.error('Error fetching utilisateurs:', error));
+            .catch(error => console.error('Error fetching utilisateurs:', error));*/
     </script>
 
 </body>

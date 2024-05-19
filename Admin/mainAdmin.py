@@ -71,7 +71,8 @@ def login():
 
 @app.route('/admin/users', methods=['GET'])
 def get_users():
-    return render_template('users.html')
+    users = get_users_api()
+    return render_template('users.html', users=users)
 
 # Récupérer utilisateurs
 @app.route('/api/utilisateurs', methods=['GET'])
@@ -82,7 +83,7 @@ def get_users_api():
         cursor.execute('SELECT * FROM UTILISATEURS')
         users = cursor.fetchall()
         conn.close()
-        return jsonify([dict(ix) for ix in users])
+        return users
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
