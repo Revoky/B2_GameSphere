@@ -1,15 +1,20 @@
-from flask import Flask, render_template, request, redirect, session, g
+from flask import Flask, render_template, request, redirect, session, g, jsonify
 import sqlite3
 
 app = Flask(__name__)
 app.secret_key = '7s3p3uBZ'
-app.database = '../Database/game_sphere.db'
+app.database = '../game_sphere.db'
 
 def get_db():
-    db = getattr(g, '_database', None)
+    db = getattr(g, '../Database/game_sphere.db', None)
     if db is None:
         db = g._database = sqlite3.connect(app.database)
     return db
+
+def get_db_connection():
+    conn = sqlite3.connect('../game_sphere.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -27,6 +32,7 @@ def getAdminData(username):
     except sqlite3.Error as e:
         print("Error fetching admin id:", e)
         return None
+
 
 @app.route('/checkID', methods=['POST'])
 def my_link():
@@ -48,6 +54,42 @@ def my_link():
 @app.route('/admin/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
+
+@app.route('/admin/users', methods=['GET'])
+def get_users():
+    users = get_users_api()
+    return render_template('users.html', users=users)
+
+@app.route('/admin/games', methods=['GET'])
+def get_games():
+    games = get_games_api()
+    return render_template('games.html', games=games)
+
+
+# Récupérer utilisateurs
+@app.route('/api/utilisateurs', methods=['GET'])
+def get_users_api():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM UTILISATEURS')
+        users = cursor.fetchall()
+        conn.close()
+        return users
+    except Exception as e:
+        return {'error': str(e)}, 500
+
+@app.route('/api/games', methods=['GET'])
+def get_games_api():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM JEUX')
+        games = cursor.fetchall()
+        conn.close()
+        return games
+    except Exception as e:
+        return {'error': str(e)}, 500
 
 @app.route('/admin/index')
 def admin_index():

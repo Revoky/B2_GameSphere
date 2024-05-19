@@ -1,5 +1,6 @@
 import sqlite3
 from sqlite3 import Error
+import new
 
 connection = sqlite3.connect('../game_sphere.db')
 cursor = connection.cursor()

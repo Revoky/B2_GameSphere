@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table id="jeuxTable">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Note Moyenne</th>
+            <th>Quantite</th>
+        </tr>
+    </thead>
+        <tbody>
+            {% for game in games %}
+            <tr>
+                <td>{{ game['nom'] }}</td>
+                <td>{{ game['prix'] }}</td>
+                <td>{{ game['note_moyenne'] }}</td>
+                <td>{{ game['quantite'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
