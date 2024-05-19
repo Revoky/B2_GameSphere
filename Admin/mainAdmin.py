@@ -33,20 +33,6 @@ def getAdminData(username):
         print("Error fetching admin id:", e)
         return None
 
-#('/api/utilisateurs', methods=['GET'])
-def get_utilisateurs():
-    try:
-        cur = get_db().cursor()
-        cur.execute('SELECT * FROM UTILISATEURS')
-        rows = cur.fetchall()
-        cur.close()
-
-        # Assuming your table has columns id and name
-        utilisateurs = [{'id': row[0], 'name': row[1]} for row in rows]
-        return jsonify(utilisateurs)
-    except Exception as e:
-        print('Error fetching users:', e)
-        return jsonify({'error': 'Internal Server Error'}), 500
 
 @app.route('/checkID', methods=['POST'])
 def my_link():
@@ -74,6 +60,12 @@ def get_users():
     users = get_users_api()
     return render_template('users.html', users=users)
 
+@app.route('/admin/games', methods=['GET'])
+def get_games():
+    games = get_games_api()
+    return render_template('games.html', games=games)
+
+
 # Récupérer utilisateurs
 @app.route('/api/utilisateurs', methods=['GET'])
 def get_users_api():
@@ -84,6 +76,18 @@ def get_users_api():
         users = cursor.fetchall()
         conn.close()
         return users
+    except Exception as e:
+        return {'error': str(e)}, 500
+
+@app.route('/api/games', methods=['GET'])
+def get_games_api():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM JEUX')
+        games = cursor.fetchall()
+        conn.close()
+        return games
     except Exception as e:
         return {'error': str(e)}, 500
 
