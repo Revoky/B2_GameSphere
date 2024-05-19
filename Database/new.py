@@ -20,7 +20,7 @@ def newUser(first_name, last_name, password, email, date_of_birth, balance=0, bi
         print("Données ajoutées avec succès à la table UTILISATEURS.")
     except sqlite3.Error as e:
         print("Erreur lors de l'insertion des données:", e)
-
+        
 
 def newGame(image, name, price, average_rating=None, user_reviews=None, quantity=0):
     try:

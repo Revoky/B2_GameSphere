@@ -25,7 +25,36 @@
     </form>
 </div>
 
+<div id="games-container"></div>
 
+<script>
+    function fetchGames() {
+        fetch('/api/jeux')
+            .then(response => response.json())
+            .then(data => {
+                const gamesContainer = document.getElementById('games-container');
+                
+                gamesContainer.innerHTML = '';
+
+                data.forEach(game => {
+                    const gameElement = document.createElement('div');
+                    gameElement.innerHTML = `
+                        <div class="game">
+                            <img src="${game.image}" alt="${game.nom}">
+                            <h2>${game.nom}</h2>
+                            <p>Prix: ${game.prix}</p>
+                            <p>Note moyenne: ${game.note_moyenne}</p>
+                            <p>Avis: ${game.avis_utilisateur}</p>
+                        </div>
+                    `;
+                    gamesContainer.appendChild(gameElement);
+                });
+            })
+            .catch(error => console.error('Erreur lors de la récupération des jeux:', error));
+    }
+
+    fetchGames();
+</script>
 
 </body>
 </html>
