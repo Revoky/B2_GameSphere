@@ -85,7 +85,7 @@ def get_users_api():
         conn.close()
         return users
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return {'error': str(e)}, 500
 
 @app.route('/admin/index')
 def admin_index():
