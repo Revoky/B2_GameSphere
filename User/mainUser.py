@@ -51,12 +51,16 @@ def my_link():
 def login():
     return render_template('login.html')
 
+# @app.route('/index')
+# def user_index():
+#     if 'user_logged_in' in session and session['user_logged_in']:
+#         return render_template('index.html')
+#     else:
+#         return redirect('/login')
+
 @app.route('/index')
 def user_index():
-    if 'user_logged_in' in session and session['user_logged_in']:
-        return render_template('index.html')
-    else:
-        return redirect('/login')
+    return render_template('index.html')
 
 @app.route('/logout')
 def logout():

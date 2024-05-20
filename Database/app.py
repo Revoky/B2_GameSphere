@@ -82,7 +82,7 @@ def create_user():
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute('''INSERT INTO UTILISATEURS (prenom, nom, mot_de_passe, mail, date_naissance) VALUES (?, ?, ?, ?, ?)''',
+        cursor.execute('''INSERT INTO UTILISATEURS (prenom, nom, mot_de_passe, mail, date_naissance) VALUES (?, ?, ?, ?, ?)''', 
             (data['prenom'], data['nom'], data['mot_de_passe'], data['mail'], data['date_naissance']))
         conn.commit()
         conn.close()
@@ -97,7 +97,7 @@ def update_user(id):
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute('''UPDATE UTILISATEURS SET prenom=?, nom=?, mot_de_passe=?, mail=?, date_naissance=? WHERE id=?''',
+        cursor.execute('''UPDATE UTILISATEURS SET prenom=?, nom=?, mot_de_passe=?, mail=?, date_naissance=? WHERE id=?''', 
             (data['prenom'], data['nom'], data['mot_de_passe'], data['mail'], data['date_naissance'], id))
         conn.commit()
         conn.close()
