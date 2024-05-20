@@ -19,6 +19,7 @@ cursor.execute('''
         prenom TEXT,
         nom TEXT,
         mot_de_passe TEXT NOT NULL,
+        image TEXT,
         mail TEXT UNIQUE NOT NULL,
         date_naissance TEXT,
         solde REAL DEFAULT 0,
@@ -60,23 +61,6 @@ cursor.execute('''
     )
 ''')
 
-#cursor.execute('''INSERT INTO UTILISATEURS (prenom, nom, mot_de_passe, mail, date_naissance) VALUES
-#("Amanda", "Armsmith", "abcABC", "a@gmail.com", "10/10/10"),
-#("Bea", "Bumblebee", "bcdBCD", "b@gmail.com", "10/10/10"),
-#("Cyril", "Cyno", "cdeCDE", "c@gmail.com", "10/10/10"),
-#("David", "Dande", "defDEF", "d@gmail.com", "10/10/10")
-#''')
-
-cursor.execute('''INSERT INTO JEUX (nom, prix, note_moyenne, quantite) VALUES
-("Alicia Online", 2.00, 3.5, 50),
-("Barn Simulator", 20, 4.8, 70),
-("Cool Things", 5.20, 4.2, 24),
-("Dandy Boy", 8.00, 4.0, 61)
-''')
-
-cursor.execute('''INSERT INTO ADMINS (nom_utilisateur, mot_de_passe) VALUES
-("administrateur", "admin")
-''')
 
 
 connection.commit()

@@ -60,6 +60,8 @@ def get_users():
     users = get_users_api()
     return render_template('users.html', users=users)
 
+
+
 @app.route('/admin/games', methods=['GET'])
 def get_games():
     games = get_games_api()
@@ -94,7 +96,9 @@ def get_games_api():
 @app.route('/admin/index')
 def admin_index():
     if 'admin_logged_in' in session and session['admin_logged_in']:
-        return render_template('index.html')
+        users = get_users_api()
+        games = get_games_api()
+        return render_template('index.html', users=users, games=games)
     else:
         return redirect('/admin/login')
 

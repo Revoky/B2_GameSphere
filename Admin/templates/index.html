@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameSphere - Tableau de bord Admin</title>
+    <link rel="stylesheet" href="../static/main.css">
 </head>
 
 <body>
@@ -16,14 +17,51 @@
     <main>
         <h1>Tableau de bord</h1>
 
-        <div class="card_members">
-            <p>x membres</p>
-            <div class="add_member">+</div>
+        <div class="flex-container">
+            <!-- Users Section -->
+            <div class="section">
+                <button class="btn" onclick="addUser()">Add User</button>
+                <div class="scroll-box" id="user-list">
+                    <!-- List of users from database will go here -->
+                    {% for user in users %}
+                    <div class="user-item">
+                        <img src="{{ user.profile_picture }}" alt="User Profile Picture">
+                        <span>{{ user.prenom }} {{ user.nom }}</span>
+                        <div class="action-buttons">
+                            <button class="edit-btn" onclick="editUser('{{ user.id }}')">Edit</button>
+                            <button class="delete-btn" onclick="deleteUser('{{ user.id }}')">Delete</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Games Section -->
+            <div class="section">
+                <button class="btn" onclick="addGame()">Add Game</button>
+                <div class="scroll-box" id="game-list">
+                    {% for game in games %}
+                    <div class="game-item">
+                        <img src="{{ game.picture }}" alt="Game Picture">
+                        <div class="game-info">
+                            <div class="game-header">
+                                <span class="game-name">{{ game.nom }}</span>
+                                <span class="game-price">{{ game.prix }} $</span>
+                            </div>
+                            <span class="game-stock">Stock: {{ game.quantite }}</span>
+                            <span class="game-note">Average Note: {{ game.note_moyenne }}</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="edit-btn" onclick="editGame('{{ game.id }}')">Edit</button>
+                            <button class="delete-btn" onclick="deleteGame('{{ game.id }}')">Delete</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        <div class="card_games">
-            <p>x jeux</p>
-            <div class="add_game">+</div>
-        </div>
+    </div>
+
         <div class="card_sales">
             <p>x ventes au total</p>
         </div>
