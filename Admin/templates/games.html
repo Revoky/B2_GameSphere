@@ -6,35 +6,42 @@
     <link rel="stylesheet" href="../static/games_users.css">
 </head>
 
-
 <header>
     <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
     <a href="/">Home</a>
 </header>
-
 
 <body>
 
 <table id="jeuxTable">
     <thead>
         <tr>
+            <th>Picture</th>
             <th>Nom</th>
             <th>Prix</th>
             <th>Note Moyenne</th>
             <th>Quantite</th>
+            <th>Actions</th>
         </tr>
     </thead>
-        <tbody>
-            {% for game in games %}
-            <tr>
-                <td>{{ game['nom'] }}</td>
-                <td>{{ game['prix'] }}</td>
-                <td>{{ game['note_moyenne'] }}</td>
-                <td>{{ game['quantite'] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <tbody>
+        {% for game in games %}
+        <tr>
+            <td><img src="{{ game['picture'] }}" alt="Game Picture" width="50" height="50"></td>
+            <td>{{ game['nom'] }}</td>
+            <td>{{ game['prix'] }}</td>
+            <td>{{ game['note_moyenne'] }}</td>
+            <td>{{ game['quantite'] }}</td>
+            <td>
+                <button onclick="editGame('{{ game['id'] }}')">Edit</button>
+                <button onclick="deleteGame('{{ game['id'] }}')">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<button onclick="createGame()">Create New Game</button>
 
 <footer>
     <ul>
@@ -42,6 +49,7 @@
         <li><a href="#">Contact</a></li>
     </ul>
 </footer>
+
 
 </body>
 </html>
