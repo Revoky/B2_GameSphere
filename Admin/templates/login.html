@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/bf58ec26bb.js" crossorigin="anonymous"></script>
+    <link href="../static/main.css" rel="stylesheet" />
     <title>GameSphere - Connexion admin</title>
 </head>
 
-<body>
+<body  class="body_login">
     <header>
         <a href="/admin/index">
             <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
         </a> 
     </header>
     
-    <main>
+    <main class="main_login">
         <h1>Connexion</h1>
 
-        <i class="fa-brands fa-meta"></i>
-        <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-square-reddit"></i>
+        <div class="icons">
+            <a href='#'><i class="fa-brands fa-meta"></i></a>
+            <a href='#'><i class="fa-brands fa-instagram"></i></a>
+            <a href='#'><i class="fa-brands fa-twitter"></i></a>
+            <a href='#'><i class="fa-brands fa-square-reddit"></i></a>
+        </div>
 
         <form action="/checkID" method="POST">
             <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required><br>
@@ -41,6 +44,7 @@
                 <a href="#">A propos de GameSphere</a>
             </li>
         </ul>
+        <p>Copyright © 2024. All rights reserved.</p>
     </footer>
 </body>
 
