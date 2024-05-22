@@ -29,7 +29,6 @@
             <div class="section">
                 <button class="btn" onclick="addUser()">Add User</button>
                 <div class="scroll-box" id="user-list">
-                    <!-- List of users from database will go here -->
                     {% for user in users %}
                     <div class="user-item">
                         <img src="{{ user.profile_picture }}" alt="User Profile Picture">

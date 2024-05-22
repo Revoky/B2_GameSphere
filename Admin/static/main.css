@@ -17,7 +17,7 @@ body {
 /* Header */
 header {
     background-color: #24305e;
-    padding: 20px 0;
+    padding: 50px 0;
     text-align: center;
     flex: 0;
 }
@@ -52,38 +52,23 @@ footer a:hover {
 /*____________________ Login.html ____________________*/
 
 .main_login {
-    margin: 50px;
     flex: 1;
-    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_container {
+  border: solid 1px #ccc;
+  padding: 40px;
+  background-color: #e7e7e7;
 }
 
 h1 {
     color: #24305e;
     text-align: center;
     margin-bottom: 20px;
-}
-
-.icons {
-    width: 30%;
-    display: flex;
-    padding-left: 35%;
-    padding-right: 35%;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    justify-content: space-evenly;
-}
-
-.fa-brands {
-    color: #428bca;
-    font-size: 24px;
-    padding: 10px;
-    border: solid #24305e 1px;
-    border-radius: 50px;
-    background-color: #e0e0e0;
-}
-
-.fa-brands:hover {
-    background-color: #9b9b9b;
 }
 
 form {
@@ -95,7 +80,7 @@ input[type="password"] {
     width: 250px;
     padding: 10px;
     border: 1px solid #ccc;
-    margin-bottom: 10px;
+    margin: 15px;
     border-radius: 4px;
 }
 
@@ -122,76 +107,6 @@ h1 {
   color: #24305e;
   text-align: center;
   margin-bottom: 20px;
-}
-
-.card_sales,
-.card_7sales {
-  /* cards css à compléter */
-}
-
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.section {
-  width: 45%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 20px;
-}
-
-.scroll-box {
-  max-height: 300px;
-  overflow-y: scroll;
-}
-
-.user-item,
-.game-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.user-item img,
-.game-item img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.user-item span,
-.game-item .game-info {
-  flex: 1;
-}
-
-.game-item .game-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-
-.game-item .game-price,
-.game-item .game-note {
-  font-weight: bold;
-}
-
-.btn,
-.edit-btn,
-.delete-btn {
-  background-color: #24305e;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.edit-btn,
-.delete-btn {
-  background-color: #428bca;
 }
 
 /*____________________ Games.html ____________________*/
