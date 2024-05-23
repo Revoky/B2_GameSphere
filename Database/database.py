@@ -33,6 +33,7 @@ cursor.execute('''
         nom TEXT NOT NULL,
         prix REAL NOT NULL,
         note_moyenne REAL,
+        avis_utilisateur TEXT,
         quantite INTEGER
     )
 ''')
