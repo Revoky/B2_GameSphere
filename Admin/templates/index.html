@@ -35,7 +35,7 @@
         <div class="flex-container">
             <!-- Users Section -->
             <div class="section">
-                <button class="btn" onclick="addUser()">Add User</button>
+                <a href="/admin/new_utilisateur">Add User</a>
                 <div class="scroll-box" id="user-list">
                     {% for user in users %}
                     <div class="user-item">
@@ -52,7 +52,7 @@
 
             <!-- Games Section -->
             <div class="section">
-                <button class="btn" onclick="addGame()">Add Game</button>
+                <a href="/admin/new_jeux">Add Game</a>
                 <div class="scroll-box" id="game-list">
                     {% for game in games %}
                     <div class="game-item">
