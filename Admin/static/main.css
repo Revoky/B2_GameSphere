@@ -1,6 +1,6 @@
-/*____________________ Global ____________________*/
+/*____________________ Global Styles ____________________*/
 
-/* Body */
+/* Basic reset for body */
 body {
     background-color: #f0f0f0;
     font-family: sans-serif;
@@ -8,13 +8,16 @@ body {
     padding: 0;
 }
 
+/* Layout for login body */
 .body_login {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Header */
+/*____________________ Header Styles ____________________*/
+
+/* Header container */
 header {
     background-color: #24305e;
     padding: 50px 0;
@@ -22,11 +25,14 @@ header {
     flex: 0;
 }
 
+/* Header links */
 header a {
     color: #f0f0f0;
 }
 
-/* Footer */
+/*____________________ Footer Styles ____________________*/
+
+/* Footer container */
 footer {
     background-color: #e0e0e0;
     padding: 20px;
@@ -35,80 +41,247 @@ footer {
     flex: 0;
 }
 
+/* Footer list */
 footer ul {
     list-style: none;
+    padding: 0;
 }
 
+/* Footer links */
 footer a {
     color: #666;
     text-decoration: none;
     margin: 0 10px;
 }
 
+/* Footer links hover effect */
 footer a:hover {
     color: #24305e;
 }
 
-/*____________________ Login.html ____________________*/
+/*____________________ Login Page Styles ____________________*/
 
+/* Main login container */
 .main_login {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
+/* Login form container */
 .login_container {
-  border: solid 1px #ccc;
-  padding: 40px;
-  background-color: #e7e7e7;
+    border: solid 1px #ccc;
+    padding: 40px;
+    background-color: #e7e7e7;
 }
 
+/* Header styles within the login page */
 h1 {
     color: #24305e;
     text-align: center;
     margin-bottom: 20px;
 }
 
-form {
-    text-align: center;
+/* Icons container */
+.icons {
+    width: 100%;
+    display: flex;
+    margin: 50px 0;
+    justify-content: space-evenly;
 }
 
+/* FontAwesome brands icon styles */
+.fa-brands {
+    color: #428bca;
+    font-size: 24px;
+    padding: 10px;
+    border: solid #24305e 1px;
+    border-radius: 50px;
+    background-color: #e0e0e0;
+}
+
+/* FontAwesome brands icon hover effect */
+.fa-brands:hover {
+    background-color: #bebebe;
+}
+
+/* Form styles */
+form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Text input and password input styles */
 input[type="text"],
 input[type="password"] {
     width: 250px;
     padding: 10px;
     border: 1px solid #ccc;
-    margin: 15px;
+    margin: 10px 0;
     border-radius: 4px;
 }
 
+/* Submit button styles */
 input[type="submit"] {
     background-color: #24305e;
     color: white;
     padding: 10px 20px;
+    margin: 25px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
+/* Submit button hover effect */
 input[type="submit"]:hover {
     background-color: #428bca;
 }
 
-/*____________________ Index.html ____________________*/
+/*____________________ General Container Styles ____________________*/
 
-main {
-  padding: 40px;
+/* General container margin */
+.container {
+    margin: 20px;
 }
 
-h1 {
-  color: #24305e;
-  text-align: center;
-  margin-bottom: 20px;
+/* Flex container for sections */
+.flex-container {
+    display: flex;
+    justify-content: space-between;
 }
 
-/*____________________ Games.html ____________________*/
+/* Individual section within the flex container */
+.section {
+    flex: 1;
+    margin: 0 10px;
+}
 
-/*____________________ Users.html ____________________*/
+/* Scrollable box */
+.scroll-box {
+    border: 1px solid #ccc;
+    height: 400px;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+/*____________________ Button Styles ____________________*/
+
+/* General button style */
+.btn {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Button hover effect */
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/*____________________ User and Game Item Styles ____________________*/
+
+/* User and game item container */
+.user-item, .game-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* User and game item image styles */
+.user-item img, .game-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* User and game item text styles */
+.user-item span, .game-info {
+    flex: 1;
+}
+
+/* Action buttons container */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Edit button styles */
+.edit-btn {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Edit button hover effect */
+.edit-btn:hover {
+    background-color: #218838;
+}
+
+/* Delete button styles */
+.delete-btn {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Delete button hover effect */
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Game info container styles */
+.game-info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Game header styles */
+.game-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Game name styles */
+.game-name {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Game details styles */
+.game-price, .game-stock, .game-note {
+    font-size: 0.9em;
+}
+
+/*____________________ Users/games Page Styles ____________________*/
+
+
+
+/*____________________ Register Page Styles ____________________*/
+
+/* (Styles for register page can be added here) */
+
+/*____________________ Index Page Styles ____________________*/
+
+/* (Styles for index page can be added here) */
