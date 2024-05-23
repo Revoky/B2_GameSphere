@@ -1,45 +1,75 @@
 import sqlite3
 
-connection = sqlite3.connect('../game_sphere.db')
-cursor = connection.cursor()
+def create_connection():
+    connection = sqlite3.connect('../game_sphere.db')
+    return connection
 
-def newAdmin(username, password) :
-    try:
-        cursor.execute("INSERT INTO ADMINS (nom_utilisateur, mot_de_passe) VALUES (?, ?)", (username, password))
-        connection.commit()
-        print("Données ajoutées avec succès à la table ADMIN.")
-    except sqlite3.Error as e:
-        print("Erreur lors de l'insertion des données:", e)
+def new_admin(nom_utilisateur, mot_de_passe):
+    connection = create_connection()
+    cursor = connection.cursor()
+    cursor.execute('''
+        INSERT INTO ADMINS (nom_utilisateur, mot_de_passe)
+        VALUES (?, ?)
+    ''', (nom_utilisateur, mot_de_passe))
+    connection.commit()
+    connection.close()
 
+def new_utilisateur(prenom, nom, mot_de_passe, image, mail, date_naissance, solde=0):
+    connection = create_connection()
+    cursor = connection.cursor()
+    cursor.execute('''
+        INSERT INTO UTILISATEURS (prenom, nom, mot_de_passe, image, mail, date_naissance, solde)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ''', (prenom, nom, mot_de_passe, image, mail, date_naissance, solde))
+    connection.commit()
+    connection.close()
 
-def newUser(first_name, last_name, password, email, date_of_birth, balance=0, bill_number=None):
-    try:
-        cursor.execute("INSERT INTO UTILISATEURS (prenom, nom, mot_de_passe, mail, date_naissance, solde, num_facture) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                       (first_name, last_name, password, email, date_of_birth, balance, bill_number))
-        connection.commit()
-        print("Données ajoutées avec succès à la table UTILISATEURS.")
-    except sqlite3.Error as e:
-        print("Erreur lors de l'insertion des données:", e)
-        
+def new_jeux(image, nom, prix, note_moyenne=None, avis_utilisateur=None, quantite=0):
+    connection = create_connection()
+    cursor = connection.cursor()
+    cursor.execute('''
+        INSERT INTO JEUX (image, nom, prix, note_moyenne, avis_utilisateur, quantite)
+        VALUES (?, ?, ?, ?, ?, ?)
+    ''', (image, nom, prix, note_moyenne, avis_utilisateur, quantite))
+    connection.commit()
+    connection.close()
 
-def newGame(image, name, price, average_rating=None, user_reviews=None, quantity=0):
-    try:
-        cursor.execute("INSERT INTO JEUX (image, nom, prix, note_moyenne, avis_utilisateur, quantite) VALUES (?, ?, ?, ?, ?, ?)",
-                       (image, name, price, average_rating, user_reviews, quantity))
-        connection.commit()
-        print("Données ajoutées avec succès à la table JEUX.")
-    except sqlite3.Error as e:
-        print("Erreur lors de l'insertion des données:", e)
+def new_avis(user_id, game_id, body, note):
+    connection = create_connection()
+    cursor = connection.cursor()
+    cursor.execute('''
+        INSERT INTO AVIS (user_id, game_id, body, note)
+        VALUES (?, ?, ?, ?)
+    ''', (user_id, game_id, body, note))
+    connection.commit()
+    connection.close()
 
+def new_facture(id_game_user, total, ancien_solde, nouveau_solde, date_facture):
+    connection = create_connection()
+    cursor = connection.cursor()
+    cursor.execute('''
+        INSERT INTO FACTURES (id_game_user, total, ancien_solde, nouveau_solde, date_facture)
+        VALUES (?, ?, ?, ?, ?)
+    ''', (id_game_user, total, ancien_solde, nouveau_solde, date_facture))
+    connection.commit()
+    connection.close()
 
-def newBill(user_id, game_name, game_price, old_balance, new_balance, bill_date):
-    try:
-        cursor.execute("INSERT INTO FACTURES (id_utilisateur, nom_jeu, prix_jeu, ancien_solde, nouveau_solde, date_facture) VALUES (?, ?, ?, ?, ?, ?)",
-                       (user_id, game_name, game_price, old_balance, new_balance, bill_date))
-        connection.commit()
-        print("Données ajoutées avec succès à la table FACTURES.")
-    except sqlite3.Error as e:
-        print("Erreur lors de l'insertion des données:", e)
+def new_jeux_user(user_id, game_id):
+    connection = create_connection()
+    cursor = connection.cursor()
+    cursor.execute('''
+        INSERT INTO JEUX_USERS (user_id, game_id)
+        VALUES (?, ?)
+    ''', (user_id, game_id))
+    connection.commit()
+    connection.close()
 
-cursor.close()
-connection.close()
+def new_jeux_avis(avis_id, game_id):
+    connection = create_connection()
+    cursor = connection.cursor()
+    cursor.execute('''
+        INSERT INTO JEUX_AVIS (avis_id, game_id)
+        VALUES (?, ?)
+    ''', (avis_id, game_id))
+    connection.commit()
+    connection.close()
