@@ -53,7 +53,7 @@ def get_game_by_id(game_id):
 def getUserData(username):
     try:
         cursor = get_db().cursor()
-        cursor.execute("SELECT mail, mot_de_passe FROM USERS WHERE mail = ?", (username,))
+        cursor.execute("SELECT mail, mot_de_passe FROM UTILISATEURS WHERE mail = ?", (username,))
         id = cursor.fetchone()
         cursor.close()
         return id
@@ -82,17 +82,14 @@ def my_link():
 def login():
     return render_template('login.html')
 
-# @app.route('/index')
-# def user_index():
-#     if 'user_logged_in' in session and session['user_logged_in']:
-#         return render_template('index.html')
-#     else:
-#         return redirect('/login')
-
 @app.route('/index')
 def user_index():
-    games = get_games_api()
-    return render_template('index.html', games=games)
+    if 'user_logged_in' in session and session['user_logged_in']:
+        games = get_games_api()
+        return render_template('index.html', games=games)
+    else:
+        return redirect('/login')
+
 
 @app.route('/index/<int:game_id>')
 def game_detail(game_id):
