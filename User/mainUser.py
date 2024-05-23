@@ -48,7 +48,62 @@ def get_game_by_id(game_id):
         print(f"Error fetching game: {e}")
         return None
 
+def get_user_by_id(user_id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM UTILISATEURS WHERE id = ?', (user_id,))
+        user = cursor.fetchone()
+        conn.close()
+        if user:
+            return dict(user)  # Convert Row object to dictionary
+        return None
+    except Exception as e:
+        print(f"Error fetching user: {e}")
+        return None
 
+def get_user_by_email(email):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM UTILISATEURS WHERE mail = ?', (email,))
+        user = cursor.fetchone()
+        conn.close()
+        if user:
+            return dict(user)  # Convert Row object to dictionary
+        return None
+    except Exception as e:
+        print(f"Error fetching user: {e}")
+        return None
+
+def get_logged_in_user_id():
+    if 'user_email' in session:
+        user = get_user_by_email(session['user_email'])
+        if user:
+            return user['id']
+    return None
+
+@app.route('/profile')
+def profile_redirect():
+    if 'user_logged_in' in session and session['user_logged_in']:
+        user_id = get_logged_in_user_id()
+        if user_id:
+            return redirect(f'/profile/{user_id}')
+    return redirect('/login')
+
+@app.route('/profile/<int:user_id>')
+def profile(user_id):
+    if 'user_logged_in' in session and session['user_logged_in']:
+        if user_id == get_logged_in_user_id():
+            user = get_user_by_id(user_id)
+            if user:
+                return render_template('profile.html', user=user)
+            else:
+                return "User not found"
+        else:
+            return "Access denied: You can only view your own profile"
+    else:
+        return redirect('/login')
 
 def getUserData(username):
     try:
@@ -73,6 +128,7 @@ def my_link():
 
     if user and user[1] == password:
         session['user_logged_in'] = True
+        session['user_email'] = username
         return redirect('/index')
     else:
         print('Invalid username or password')
@@ -90,7 +146,6 @@ def user_index():
     else:
         return redirect('/login')
 
-
 @app.route('/index/<int:game_id>')
 def game_detail(game_id):
     game = get_game_by_id(game_id)
@@ -99,10 +154,10 @@ def game_detail(game_id):
     else:
         return "Game not found", 404
 
-
 @app.route('/logout')
 def logout():
     session.pop('user_logged_in', None)
+    session.pop('user_email', None)
     return redirect('/login')
 
 if __name__ == '__main__':
