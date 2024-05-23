@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ game.nom }} - GameSphere</title>
+    <link rel="stylesheet" href="../static/main.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">
+        <a href="/index">
+            <img src="../Assets/Imgs/logo.png" alt="Logo">
+        </a>
+    </div>
+    <div class="buttons">
+        <a href="/index" class="button">Back to Dashboard</a>
+    </div>
+</header>
+
+<main>
+    <div class="game-detail-container">
+        <div class="game-image">
+            <img src="{{ game.image }}" alt="{{ game.nom }}">
+        </div>
+        <div class="game-info">
+            <h1>{{ game.nom }}</h1>
+            <p class="game-price">Price: {{ game.prix }} $</p>
+            <p class="game-note">Average Rating: {{ game.note_moyenne }}</p>
+            <p class="game-stock">Quantity in Stock: {{ game.quantite }}</p>
+            <h3>User Reviews</h3>
+            <ul class="reviews-list">
+                {% if game.avis_utilisateur %}
+                    {% for review in game.avis_utilisateur %}
+                    <li>{{ review }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No reviews available.</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

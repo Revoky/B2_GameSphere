@@ -21,6 +21,21 @@ def get_games():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+def get_game_by_id(game_id):
+    # Connect to the SQLite database
+    conn = sqlite3.connect('your_database.db')
+    cursor = conn.cursor()
+
+    # Execute a SELECT query to retrieve the game with the specified ID
+    cursor.execute("SELECT * FROM games WHERE id=?", (game_id,))
+    game = cursor.fetchone()  # Fetch the first row
+
+    # Close the cursor and connection
+    cursor.close()
+    conn.close()
+
+    return game
+
 # Ajouter jeu
 @app.route('/api/jeux', methods=['POST'])
 def add_game():

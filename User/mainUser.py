@@ -3,7 +3,7 @@ import sqlite3
 
 app = Flask(__name__)
 app.secret_key = '7s3p3uBZ'
-app.database = '../Database/game_sphere.db'
+app.database = '../game_sphere.db'
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -11,11 +11,42 @@ def get_db():
         db = g._database = sqlite3.connect(app.database)
     return db
 
+def get_db_connection():
+    conn = sqlite3.connect('../game_sphere.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)
     if db is not None:
         db.close()
+
+@app.route('/api/games', methods=['GET'])
+def get_games_api():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM JEUX')
+        games = cursor.fetchall()
+        conn.close()
+        return games
+    except Exception as e:
+        return {'error': str(e)}, 500
+
+def get_game_by_id(game_id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM JEUX WHERE id = ?', (game_id,))
+        game = cursor.fetchone()
+        conn.close()
+        if game:
+            return dict(game)  # Convert Row object to dictionary
+        return None
+    except Exception as e:
+        print(f"Error fetching game: {e}")
+        return None
 
 
 
@@ -60,7 +91,17 @@ def login():
 
 @app.route('/index')
 def user_index():
-    return render_template('index.html')
+    games = get_games_api()
+    return render_template('index.html', games=games)
+
+@app.route('/index/<int:game_id>')
+def game_detail(game_id):
+    game = get_game_by_id(game_id)
+    if game:
+        return render_template('game_detail.html', game=game)
+    else:
+        return "Game not found", 404
+
 
 @app.route('/logout')
 def logout():
