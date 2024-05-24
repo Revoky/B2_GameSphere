@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, g, url_for
+from flask import Flask, render_template, request, redirect, session, g, url_for, jsonify
 import sqlite3
 
 from Database.new import new_jeux, new_utilisateur
@@ -69,6 +69,33 @@ def get_games():
     games = get_games_api()
     return render_template('games.html', games=games)
 
+def get_game_by_id(game_id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM JEUX WHERE id = ?', (game_id,))
+        game = cursor.fetchone()
+        conn.close()
+        if game:
+            return dict(game)  # Convert Row object to dictionary
+        return None
+    except Exception as e:
+        print(f"Error fetching game: {e}")
+        return None
+
+def get_user_by_id(user_id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM UTILISATEURS WHERE id = ?', (user_id,))
+        user = cursor.fetchone()
+        conn.close()
+        if user:
+            return dict(user)  # Convert Row object to dictionary
+        return None
+    except Exception as e:
+        print(f"Error fetching user: {e}")
+        return None
 
 # Récupérer utilisateurs
 @app.route('/api/utilisateurs', methods=['GET'])
@@ -118,6 +145,51 @@ def add_utilisateur():
         return redirect('/admin/index')
     return render_template('new_utilisateur.html')
 
+@app.route('/admin/edit_utilisateur/<int:id>')
+def edit_utilisateur(id):
+    user = get_user_by_id(id)
+    if user:
+        return render_template('edit_user.html', user=user)
+    else:
+        return "User not found", 404
+
+@app.route('/admin/update_utilisateur/<int:id>', methods=['POST'])
+def update_utilisateur(id):
+    data = request.form
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('''
+            UPDATE UTILISATEURS SET prenom=?, nom=?, mot_de_passe=?, image=?, mail=?, date_naissance=?, solde=?
+            WHERE id=?
+        ''', (data['prenom'], data['nom'], data['password'], data['image'], data['email'], data['date_naissance'], data['solde'], id))
+        conn.commit()
+        conn.close()
+        return redirect('/admin/index')
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/admin/delete_utilisateur/<int:id>')
+def delete_utilisateur(id):
+    user = get_user_by_id(id)
+    if user:
+        return render_template('delete_user.html', user=user)
+    else:
+        return "User not found", 404
+
+@app.route('/admin/delete_utilisateur/<int:id>', methods=['POST'])
+def delete_utilisateur_confirm(id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM UTILISATEURS WHERE id=?', (id,))
+        conn.commit()
+        conn.close()
+        return redirect('/admin/index')
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 @app.route('/admin/new_jeux', methods=['GET', 'POST'])
 def add_jeux():
     if request.method == 'POST':
@@ -140,6 +212,51 @@ def add_jeux():
         new_jeux(image, nom, float(prix), float(note_moyenne) if note_moyenne else None, avis_utilisateur if avis_utilisateur else None, int(quantite))
         return redirect('/admin/index')
     return render_template('new_jeux.html')
+
+@app.route('/admin/edit_jeu/<int:id>')
+def edit_jeu(id):
+    game = get_game_by_id(id)
+    if game:
+        return render_template('edit_game.html', game=game)
+    else:
+        return "Game not found", 404
+
+@app.route('/admin/update_jeu/<int:id>', methods=['POST'])
+def update_jeu(id):
+    data = request.form
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('''
+            UPDATE JEUX SET nom=?, prix=?, note_moyenne=?, avis_utilisateur=?, quantite=?, image=?
+            WHERE id=?
+        ''', (data['nom'], data['prix'], data['note_moyenne'], data['avis_utilisateur'], data['quantite'], data['image'], id))
+        conn.commit()
+        conn.close()
+        return redirect('/admin/index')
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/admin/delete_jeu/<int:id>')
+def delete_jeu(id):
+    game = get_game_by_id(id)
+    if game:
+        return render_template('delete_game.html', game=game)
+    else:
+        return "Game not found", 404
+
+@app.route('/admin/delete_jeu/<int:id>', methods=['POST'])
+def delete_jeu_confirm(id):
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM JEUX WHERE id=?', (id,))
+        conn.commit()
+        conn.close()
+        return redirect('/admin/index')
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 @app.route('/admin/logout')
 def logout():
