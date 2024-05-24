@@ -1,6 +1,4 @@
-/*____________________ Global Styles ____________________*/
-
-/* Basic reset for body */
+/* Edit and Delete Page Styles */
 body {
     background-color: #f0f0f0;
     font-family: sans-serif;
@@ -8,218 +6,61 @@ body {
     padding: 0;
 }
 
-/* Layout for login body */
-.body_login {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-
-
-/* Icons container */
-.icons {
-    width: 100%;
-    display: flex;
-    margin: 50px 0;
-    justify-content: space-evenly;
-}
-
-/* FontAwesome brands icon styles */
-.fa-brands {
-    color: #428bca;
-    font-size: 24px;
-    padding: 10px;
-    border: solid #24305e 1px;
-    border-radius: 50px;
-    background-color: #e0e0e0;
-}
-
-/* FontAwesome brands icon hover effect */
-.fa-brands:hover {
-    background-color: #bebebe;
-}
-
-/* Form styles */
-form {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Text input and password input styles */
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="date"],
-input[type="number"],
-textarea {
-    width: 250px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin: 10px 0;
-    border-radius: 4px;
-}
-
-/* Submit button styles */
-input[type="submit"],
-button {
-    background-color: #24305e;
-    color: white;
-    padding: 10px 20px;
-    margin: 25px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* Submit button hover effect */
-input[type="submit"]:hover,
-button:hover {
-    background-color: #428bca;
-}
-
-/*____________________ General Container Styles ____________________*/
-
-/* General container margin */
 .container {
     margin: 20px;
 }
 
-/* Flex container for sections */
-.flex-container {
-    display: flex;
-    justify-content: space-between;
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Individual section within the flex container */
-.section {
-    flex: 1;
-    margin: 0 10px;
+.form-group {
+    margin-bottom: 20px;
 }
 
-/* Scrollable box */
-.scroll-box {
-    border: 1px solid #ccc;
-    height: 400px;
-    overflow-y: scroll;
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group textarea {
+    width: 100%;
     padding: 10px;
-    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-/*____________________ Button Styles ____________________*/
+.form-group textarea {
+    resize: vertical;
+}
 
-/* General button style */
-.btn {
-    display: inline-block;
-    margin-bottom: 10px;
+.form-group button {
     padding: 10px 20px;
     background-color: #007BFF;
     color: #fff;
-    text-align: center;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    border-radius: 5px;
 }
 
-/* Button hover effect */
-.btn:hover {
+.form-group button:hover {
     background-color: #0056b3;
 }
 
-/*____________________ User and Game Item Styles ____________________*/
-
-/* User and game item container */
-.user-item, .game-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
 }
 
-/* User and game item image styles */
-.user-item img, .game-item img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+.success-message {
+    color: #28a745;
+    font-size: 14px;
 }
-
-/* User and game item text styles */
-.user-item span, .game-info {
-    flex: 1;
-}
-
-/* Action buttons container */
-.action-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-/* Edit button styles */
-.edit-btn {
-    padding: 5px 10px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-/* Edit button hover effect */
-.edit-btn:hover {
-    background-color: #218838;
-}
-
-/* Delete button styles */
-.delete-btn {
-    padding: 5px 10px;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-/* Delete button hover effect */
-.delete-btn:hover {
-    background-color: #c82333;
-}
-
-/* Game info container styles */
-.game-info {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Game header styles */
-.game-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-/* Game name styles */
-.game-name {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-/* Game details styles */
-.game-price, .game-stock, .game-note {
-    font-size: 0.9em;
-}
-
-/*____________________ Users/games Page Styles ____________________*/
-
-/* (Styles for users/games page can be added here) */
-
-/*____________________ Register Page Styles ____________________*/
-
-/* (Styles for register page can be added here) */
-
-/*____________________ Index Page Styles ____________________*/
-
-/* (Styles for index page can be added here) */

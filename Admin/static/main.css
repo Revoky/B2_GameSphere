@@ -169,6 +169,27 @@ input[type="submit"]:hover {
     background-color: #f9f9f9;
 }
 
+/* General button style */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.btn:hover {
+    background-color: #0056b3;
+}
+
 /* Specific styles for Add button */
 .add-btn {
     background-color: #28a745;
@@ -195,6 +216,42 @@ input[type="submit"]:hover {
 .delete-btn:hover {
     background-color: #c82333;
 }
+
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.card a:hover {
+    background-color: #0056b3;
+}
+
 
 /*____________________ User and Game Item Styles ____________________*/
 
