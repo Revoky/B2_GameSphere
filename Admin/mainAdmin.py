@@ -97,6 +97,30 @@ def get_user_by_id(user_id):
         print(f"Error fetching user: {e}")
         return None
 
+def get_num_users_from_database():
+    try:
+        conn = sqlite3.connect('../game_sphere.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT COUNT(*) FROM UTILISATEURS')
+        num_users = cursor.fetchone()[0]
+        conn.close()
+        return num_users
+    except Exception as e:
+        print(f"Error fetching number of users: {e}")
+        return None
+
+def get_num_games_from_database():
+    try:
+        conn = sqlite3.connect('../game_sphere.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT COUNT(*) FROM JEUX')
+        num_games = cursor.fetchone()[0]
+        conn.close()
+        return num_games
+    except Exception as e:
+        print(f"Error fetching number of games: {e}")
+        return None
+
 # Récupérer utilisateurs
 @app.route('/api/utilisateurs', methods=['GET'])
 def get_users_api():
@@ -127,7 +151,13 @@ def admin_index():
     if 'admin_logged_in' in session and session['admin_logged_in']:
         users = get_users_api()
         games = get_games_api()
-        return render_template('index.html', users=users, games=games)
+        # Fetch number of users from the database
+        num_users = get_num_users_from_database()
+
+        # Fetch number of games from the database
+        num_games = get_num_games_from_database()
+
+        return render_template('index.html', users=users, games=games, num_games=num_games, num_users=num_users)
     else:
         return redirect('/admin/login')
 
