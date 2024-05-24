@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Game</title>
+    <link rel="stylesheet" href="../static/main.css">
     <link rel="stylesheet" href="../static/edit_delete.css">
+    <title>Edit Game</title>
 </head>
+
 <body>
+    <header>
+        <a href="/admin/index">
+            <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
+        </a>
+    </header>
+    
     <h1>Edit Game</h1>
     <form action="/admin/update_jeu/{{ game.id }}" method="POST">
         <label for="nom">Name:</label>
@@ -24,5 +32,21 @@
         <button type="submit">Update Game</button>
         <a href="/admin/games" class="btn">Back to Games</a>
     </form>
+    
+    <footer>
+        <ul>
+            <li>
+                <a href="#">Mentions légales</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+            <li>
+                <a href="#">A propos de GameSphere</a>
+            </li>
+        </ul>
+        <p>Copyright © 2024. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>

@@ -3,41 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameSphere Accueil</title>
     <link rel="stylesheet" href="../static/main.css">
+    <title>GameSphere Accueil</title>
 </head>
+
 <body>
+    <header>
+        <a href="/index">
+            <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
+        </a> 
+    </header>
 
-<header class="header">
-    <div class="logo">
-        <img src="../../Assets/Imgs/logo.png" alt="Logo">
-    </div>
-    <div class="buttons">
-        <button class="button">Button 1</button>
-        <a href="/profile" class="button">Button 2</a>
-    </div>
-</header>
-
-<div class="search-container">
-    <form action="/search" method="GET">
-        <input type="text" placeholder="Search..." name="q">
-        <button type="submit" class="search-button">Search</button>
-    </form>
-</div>
-
-<div id="games-container" class="games-grid">
-    {% for game in games %}
-    <a href="/index/{{ game.id }}" class="game-item">
-        <img src="{{ game.image }}" alt="{{ game.nom }}">
-        <div class="game-details">
-            <span class="game-price">{{ game.prix }} $</span>
-            <h2 class="game-name">{{ game.nom }}</h2>
+    <main>
+        <div class="search-container">
+            <form action="/search" method="GET">
+                <input type="text" placeholder="Search..." name="q">
+                <button type="submit" class="search-button">Search</button>
+            </form>
         </div>
-    </a>
-    {% endfor %}
-</div>
 
-<footer>
+        <div id="games-container" class="games-grid">
+            {% for game in games %}
+            <a href="/index/{{ game.id }}" class="game-item">
+                <img src="{{ game.image }}" alt="{{ game.nom }}">
+                <div class="game-details">
+                    <span class="game-price">{{ game.prix }} $</span>
+                    <h2 class="game-name">{{ game.nom }}</h2>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
         <ul>
             <li>
                 <a href="#">Mentions légales</a>
@@ -51,6 +49,6 @@
         </ul>
         <p>Copyright © 2024. All rights reserved.</p>
     </footer>
-
 </body>
+
 </html>

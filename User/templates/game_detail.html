@@ -3,52 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ game.nom }} - GameSphere</title>
     <link rel="stylesheet" href="../static/main.css">
+    <title>{{ game.nom }} - GameSphere</title>
 </head>
+
 <body>
-
-<header class="header">
-    <div class="logo">
-        <img src="../../Assets/Imgs/logo.png" alt="Logo">
-    </div>
-    <div class="search-container">
-        <form action="/search" method="GET">
-            <input type="text" placeholder="Search..." name="q">
-            <button type="submit" class="search-button">Search</button>
-        </form>
-    </div>
-    <div class="buttons">
-        <button class="button">Button 1</button>
-        <a href="/profile" class="button">Button 2</a>
-    </div>
-</header>
-
-<main>
-    <div class="game-detail-container">
-        <div class="game-image">
-            <img src="{{ game.image }}" alt="{{ game.nom }}">
+    <header class="header">
+        <a href="/index" class='logo'>
+            <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
+        </a> 
+        <div class="search-container">
+            <form action="/search" method="GET">
+                <input type="text" placeholder="Search..." name="q">
+                <button type="submit" class="search-button">Search</button>
+            </form>
         </div>
-        <div class="game-info">
-            <h1>{{ game.nom }}</h1>
-            <p class="game-price">Price: {{ game.prix }} $</p>
-            <p class="game-note">Average Rating: {{ game.note_moyenne }}</p>
-            <p class="game-stock">Quantity in Stock: {{ game.quantite }}</p>
-            <h3>User Reviews</h3>
-            <ul class="reviews-list">
-                {% if game.avis_utilisateur %}
-                    {% for review in game.avis_utilisateur %}
-                    <li>{{ review }}</li>
-                    {% endfor %}
-                {% else %}
-                    <li>No reviews available.</li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-</main>
+    </header>
 
-<footer>
+    <main>
+        <div class="game-detail-container">
+            <div class="game-image">
+                <img src="{{ game.image }}" alt="Image de {{ game.nom }}">
+            </div>
+            <div>
+                <h1 class="notVisible">{{ game.nom }}</h1>
+                <p class="game-price">Price: {{ game.prix }} $</p>
+                <p class="game-note">Average Rating: {{ game.note_moyenne }}</p>
+                <p class="game-stock">Quantity in Stock: {{ game.quantite }}</p>
+                <h3>User Reviews</h3>
+                <ul class="reviews-list">
+                    {% if game.avis_utilisateur %}
+                        {% for review in game.avis_utilisateur %}
+                        <li>{{ review }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No reviews available.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
         <ul>
             <li>
                 <a href="#">Mentions légales</a>
@@ -62,6 +58,6 @@
         </ul>
         <p>Copyright © 2024. All rights reserved.</p>
     </footer>
-
 </body>
+
 </html>

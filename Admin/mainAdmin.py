@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, session, g, url_for, jsonify
 import sqlite3
 
-from Database.new import new_jeux, new_utilisateur
+#from Database.new import new_jeux, new_utilisateur
 
 app = Flask(__name__)
 app.secret_key = '7s3p3uBZ'

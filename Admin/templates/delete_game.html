@@ -3,14 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Game</title>
+    <link rel="stylesheet" href="../static/main.css">
     <link rel="stylesheet" href="../static/edit_delete.css">
+    <title>Delete Game</title>
 </head>
+
 <body>
+    <header>
+        <a href="/admin/index">
+            <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
+        </a>
+    </header>
+
     <h1>Delete Game</h1>
     <p>Are you sure you want to delete {{ game.nom }}?</p>
     <form action="/admin/delete_jeu/{{ game.id }}" method="POST">
         <button type="submit">Delete Game</button>
     </form>
+
+    <footer>
+        <ul>
+            <li>
+                <a href="#">Mentions légales</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+            <li>
+                <a href="#">A propos de GameSphere</a>
+            </li>
+        </ul>
+        <p>Copyright © 2024. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
