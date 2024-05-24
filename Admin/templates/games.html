@@ -33,15 +33,15 @@
             <td>{{ game['note_moyenne'] }}</td>
             <td>{{ game['quantite'] }}</td>
             <td>
-                <button onclick="editGame('{{ game['id'] }}')">Edit</button>
-                <button onclick="deleteGame('{{ game['id'] }}')">Delete</button>
+                <a href="/admin/edit_jeu/{{ game.id }}" class="btn edit-btn">Edit</a>
+                <a href="/admin/delete_jeu/{{ game.id }}" class="btn delete-btn">Delete</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<button onclick="createGame()">Create New Game</button>
+<a href="/admin/new_jeux"  class="btn add-btn">Add Game</a>
 
 <footer>
     <ul>

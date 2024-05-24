@@ -35,15 +35,15 @@
         <div class="flex-container">
             <!-- Users Section -->
             <div class="section">
-                <a href="/admin/new_utilisateur">Add User</a>
+                <a href="/admin/new_utilisateur"  class="btn add-btn">Add User</a>
                 <div class="scroll-box" id="user-list">
                     {% for user in users %}
                     <div class="user-item">
                         <img src="{{ user.profile_picture }}" alt="User Profile Picture">
                         <span>{{ user.prenom }} {{ user.nom }}</span>
                         <td>
-                            <a href="/admin/edit_utilisateur/{{ user.id }}">Edit</a>
-                            <a href="/admin/delete_utilisateur/{{ user.id }}">Delete</a>
+                            <a href="/admin/edit_utilisateur/{{ user.id }}" class="btn edit-btn">Edit</a>
+                            <a href="/admin/delete_utilisateur/{{ user.id }}" class="btn delete-btn">Delete</a>
                         </td>
                     </div>
                     {% endfor %}
@@ -52,7 +52,7 @@
 
             <!-- Games Section -->
             <div class="section">
-                <a href="/admin/new_jeux">Add Game</a>
+                <a href="/admin/new_jeux"  class="btn add-btn">Add Game</a>
                 <div class="scroll-box" id="game-list">
                     {% for game in games %}
                     <div class="game-item">
@@ -66,8 +66,8 @@
                             <span class="game-note">Average Note: {{ game.note_moyenne }}</span>
                         </div>
                         <td>
-                            <a href="/admin/edit_jeu/{{ game.id }}">Edit</a>
-                            <a href="/admin/delete_jeu/{{ game.id }}">Delete</a>
+                            <a href="/admin/edit_jeu/{{ game.id }}" class="btn edit-btn">Edit</a>
+                            <a href="/admin/delete_jeu/{{ game.id }}" class="btn delete-btn">Delete</a>
                         </td>
                     </div>
                     {% endfor %}

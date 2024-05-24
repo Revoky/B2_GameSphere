@@ -36,15 +36,15 @@
             <td>{{ user['mot_de_passe'] }}</td>
             <td>{{ user['solde'] }}</td>
             <td>
-                <button onclick="editUser('{{ user['id'] }}')">Edit</button>
-                <button onclick="deleteUser('{{ user['id'] }}')">Delete</button>
+                <a href="/admin/edit_utilisateur/{{ user.id }}" class="btn edit-btn">Edit</a>
+                <a href="/admin/delete_utilisateur/{{ user.id }}" class="btn delete-btn">Delete</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<button onclick="createUser()">Create New User</button>
+<a href="/admin/new_utilisateur"  class="btn add-btn">Add User</a>
 
 <footer>
     <ul>
