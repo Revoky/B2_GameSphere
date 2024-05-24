@@ -19,17 +19,17 @@
 
         <div class="card_members">
             <p>x membres</p>
-            <div class="add_member">+</div>
+            <a href="/admin/new_utilisateur" class="add_member">+</a>
         </div>
         <div class="card_games">
             <p>x jeux</p>
-            <div class="add_game">+</div>
+            <a href="/admin/new_jeux" class="add_game">+</a>
         </div>
         <div class="card_sales">
             <p>x ventes au total</p>
         </div>
         <div class="card_7sales">
-            <p>x ventes sur les 7 denriers jours</p>
+            <p>x ventes sur les 7 derniers jours</p>
         </div>
 
         <div class="flex-container">
@@ -41,10 +41,10 @@
                     <div class="user-item">
                         <img src="{{ user.profile_picture }}" alt="User Profile Picture">
                         <span>{{ user.prenom }} {{ user.nom }}</span>
-                        <div class="action-buttons">
-                            <button class="edit-btn" onclick="editUser('{{ user.id }}')">Edit</button>
-                            <button class="delete-btn" onclick="deleteUser('{{ user.id }}')">Delete</button>
-                        </div>
+                        <td>
+                            <a href="/admin/edit_utilisateur/{{ user.id }}">Edit</a>
+                            <a href="/admin/delete_utilisateur/{{ user.id }}">Delete</a>
+                        </td>
                     </div>
                     {% endfor %}
                 </div>
@@ -65,10 +65,10 @@
                             <span class="game-stock">Stock: {{ game.quantite }}</span>
                             <span class="game-note">Average Note: {{ game.note_moyenne }}</span>
                         </div>
-                        <div class="action-buttons">
-                            <button class="edit-btn" onclick="editGame('{{ game.id }}')">Edit</button>
-                            <button class="delete-btn" onclick="deleteGame('{{ game.id }}')">Delete</button>
-                        </div>
+                        <td>
+                            <a href="/admin/edit_jeu/{{ game.id }}">Edit</a>
+                            <a href="/admin/delete_jeu/{{ game.id }}">Delete</a>
+                        </td>
                     </div>
                     {% endfor %}
                 </div>

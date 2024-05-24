@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete User</title>
+    <link rel="stylesheet" href="../static/edit_delete.css">
+</head>
+<body>
+    <h1>Delete User</h1>
+    <p>Are you sure you want to delete {{ user.prenom }} {{ user.nom }}?</p>
+    <form action="/admin/delete_utilisateur/{{ user.id }}" method="POST">
+        <button type="submit">Delete User</button>
+    </form>
+</body>
+</html>

@@ -15,75 +15,7 @@ body {
     min-height: 100vh;
 }
 
-/*____________________ Header Styles ____________________*/
 
-/* Header container */
-header {
-    background-color: #24305e;
-    padding: 50px 0;
-    text-align: center;
-    flex: 0;
-}
-
-/* Header links */
-header a {
-    color: #f0f0f0;
-}
-
-/*____________________ Footer Styles ____________________*/
-
-/* Footer container */
-footer {
-    background-color: #e0e0e0;
-    padding: 20px;
-    text-align: center;
-    color: #666;
-    flex: 0;
-}
-
-/* Footer list */
-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-/* Footer links */
-footer a {
-    color: #666;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-/* Footer links hover effect */
-footer a:hover {
-    color: #24305e;
-}
-
-/*____________________ Login Page Styles ____________________*/
-
-/* Main login container */
-.main_login {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-/* Login form container */
-.login_container {
-    border: solid 1px #ccc;
-    padding: 40px;
-    background-color: #e7e7e7;
-}
-
-/* Header styles within the login page */
-h1 {
-    color: #24305e;
-    text-align: center;
-    margin-bottom: 20px;
-}
 
 /* Icons container */
 .icons {
@@ -117,7 +49,11 @@ form {
 
 /* Text input and password input styles */
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+textarea {
     width: 250px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -126,7 +62,8 @@ input[type="password"] {
 }
 
 /* Submit button styles */
-input[type="submit"] {
+input[type="submit"],
+button {
     background-color: #24305e;
     color: white;
     padding: 10px 20px;
@@ -137,7 +74,8 @@ input[type="submit"] {
 }
 
 /* Submit button hover effect */
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+button:hover {
     background-color: #428bca;
 }
 
@@ -169,31 +107,25 @@ input[type="submit"]:hover {
     background-color: #f9f9f9;
 }
 
-/* Specific styles for Add button */
-.add-btn {
-    background-color: #28a745;
+/*____________________ Button Styles ____________________*/
+
+/* General button style */
+.btn {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
-.add-btn:hover {
-    background-color: #218838;
-}
-
-/* Specific styles for Edit button */
-.edit-btn {
-    background-color: #ffc107;
-}
-
-.edit-btn:hover {
-    background-color: #e0a800;
-}
-
-/* Specific styles for Delete button */
-.delete-btn {
-    background-color: #dc3545;
-}
-
-.delete-btn:hover {
-    background-color: #c82333;
+/* Button hover effect */
+.btn:hover {
+    background-color: #0056b3;
 }
 
 /*____________________ User and Game Item Styles ____________________*/
@@ -220,6 +152,41 @@ input[type="submit"]:hover {
     flex: 1;
 }
 
+/* Action buttons container */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Edit button styles */
+.edit-btn {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Edit button hover effect */
+.edit-btn:hover {
+    background-color: #218838;
+}
+
+/* Delete button styles */
+.delete-btn {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Delete button hover effect */
+.delete-btn:hover {
+    background-color: #c82333;
+}
 
 /* Game info container styles */
 .game-info {
@@ -245,3 +212,14 @@ input[type="submit"]:hover {
     font-size: 0.9em;
 }
 
+/*____________________ Users/games Page Styles ____________________*/
+
+/* (Styles for users/games page can be added here) */
+
+/*____________________ Register Page Styles ____________________*/
+
+/* (Styles for register page can be added here) */
+
+/*____________________ Index Page Styles ____________________*/
+
+/* (Styles for index page can be added here) */
