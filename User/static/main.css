@@ -13,8 +13,11 @@ body {
 
 /* Header */
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #24305e;
-    padding: 50px 0;
+    padding: 50px;
     text-align: center;
     flex: 0;
 }
