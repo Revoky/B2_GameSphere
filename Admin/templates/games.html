@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main.css">
     <link rel="stylesheet" href="../static/games_users.css">
+    <title>Title</title>
 </head>
 
-<header>
-    <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
-    <a href="/">Home</a>
-</header>
-
 <body>
+    <header>
+        <a href="/admin/index">
+            <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
+        </a>
+    </header>
+    
 
 <table id="jeuxTable">
     <thead>
@@ -33,23 +36,30 @@
             <td>{{ game['note_moyenne'] }}</td>
             <td>{{ game['quantite'] }}</td>
             <td>
-                <button onclick="editGame('{{ game['id'] }}')">Edit</button>
-                <button onclick="deleteGame('{{ game['id'] }}')">Delete</button>
+                <a href="/admin/edit_jeu/{{ game.id }}" class="btn edit-btn">Edit</a>
+                <a href="/admin/delete_jeu/{{ game.id }}" class="btn delete-btn">Delete</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<button onclick="createGame()">Create New Game</button>
+<a href="/admin/new_jeux"  class="btn add-btn">Add Game</a>
 
 <footer>
     <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li>
+            <a href="#">Mentions légales</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+        <li>
+            <a href="#">A propos de GameSphere</a>
+        </li>
     </ul>
+    <p>Copyright © 2024. All rights reserved.</p>
 </footer>
-
 
 </body>
 </html>

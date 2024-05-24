@@ -4,34 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/main.css">
-    <title>GameSphere Accueil</title>
+    <title>User Profile</title>
 </head>
 
 <body>
-    <header>
-        <a href="/index">
+    <header class="header">
+        <a href="/index" class='logo'>
             <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
         </a> 
-    </header>
-
-    <main>
         <div class="search-container">
             <form action="/search" method="GET">
                 <input type="text" placeholder="Search..." name="q">
                 <button type="submit" class="search-button">Search</button>
             </form>
         </div>
+        <div class="buttons">
+            <button class="button">Button 1</button>
+            <a href="/profile" class="button">Button 2</a>
+        </div>
+    </header>
 
-        <div id="games-container" class="games-grid">
-            {% for game in games %}
-            <a href="/index/{{ game.id }}" class="game-item">
-                <img src="{{ game.image }}" alt="{{ game.nom }}">
-                <div class="game-details">
-                    <span class="game-price">{{ game.prix }} $</span>
-                    <h2 class="game-name">{{ game.nom }}</h2>
+    <main>
+        <div class="profile-container">
+            <h1>User Profile</h1>
+            <div class="profile-details">
+                <div class="profile-image">
+                    <img src="{{ user.image }}" alt="Profile Picture">
                 </div>
-            </a>
-            {% endfor %}
+                <div class="profile-info">
+                    <p><strong>Name:</strong> {{ user.prenom }} {{ user.nom }}</p>
+                    <p><strong>Email:</strong> {{ user.mail }}</p>
+                    <p><strong>Date of Birth:</strong> {{ user.date_naissance }}</p>
+                    <p><strong>Account Balance:</strong> {{ user.solde }} $</p>
+                </div>
+            </div>
         </div>
     </main>
 

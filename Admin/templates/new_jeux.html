@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main.css">
+    <title>Add Game</title>
+</head>
+
+<body>
+    <header>
+        <a href="/admin/index">
+            <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
+        </a>
+    </header>
+    
+    <h1>Add Game</h1>
+    <form method="post">
+        <label for="image">Image:</label>
+        <input type="text" id="image" name="image"><br>
+        <label for="nom">Name:</label>
+        <input type="text" id="nom" name="nom" required><br>
+        <label for="prix">Price:</label>
+        <input type="number" step="0.01" id="prix" name="prix" required><br>
+        <label for="note_moyenne">Average Rating:</label>
+        <input type="number" step="0.1" id="note_moyenne" name="note_moyenne"><br>
+        <label for="avis_utilisateur">User Reviews:</label>
+        <textarea id="avis_utilisateur" name="avis_utilisateur"></textarea><br>
+        <label for="quantite">Quantity:</label>
+        <input type="number" id="quantite" name="quantite" required><br>
+        <input type="submit" value="Add Game">
+    </form>
+    <a href="/admin/index">Back to Home</a>
+    
+    <footer>
+        <ul>
+            <li>
+                <a href="#">Mentions légales</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+            <li>
+                <a href="#">A propos de GameSphere</a>
+            </li>
+        </ul>
+        <p>Copyright © 2024. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

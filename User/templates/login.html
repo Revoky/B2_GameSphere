@@ -10,7 +10,7 @@
 
 <body class="body_login">
     <header>
-        <a href="/admin/index">
+        <a href="/index">
             <img src="../../Assets/Imgs/logo.png" alt="Logo de GameSphere">
         </a> 
     </header>
@@ -26,11 +26,12 @@
                 <a href='#'><i class="fa-brands fa-square-reddit"></i></a>
             </div>
 
-            <form action="/login" method="post">
-                <input type="text" name="email" placeholder="Adresse mail" required>
+            <form action="/checkID" method="post">
+                <input type="text" name="username" placeholder="Adresse mail" required>
                 <input type="password" name="password" placeholder="Mot de passe" required>
                 <input type="submit" value="Connexion">
             </form>
+
 
             <a href="/forgot-password" class="forgot-password">Mot de passe oublié ?</a><br>
             <a href="/register" class="register">Créer un compte</a>

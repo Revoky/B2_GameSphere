@@ -2,15 +2,12 @@
 
 /* Body */
 body {
+    display: flex;
+    flex-direction: column;
     background-color: #f0f0f0;
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.body_login {
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
 }
 
@@ -24,6 +21,12 @@ header {
 
 header a {
     color: #f0f0f0;
+}
+
+/* Main */
+
+main {
+    flex: 1;
 }
 
 /* Footer */
@@ -51,8 +54,13 @@ footer a:hover {
 
 /*____________________ Login.html ____________________*/
 
+.body_login {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .main_login {
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -124,25 +132,6 @@ input[type="submit"]:hover {
 
 /*____________________ Register.html ____________________*/
 
-c
-
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-}
-
 .logo img {
     height: 50px;
 }
@@ -165,7 +154,9 @@ body {
 
 .search-container form {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
 }
 
 .search-container input[type="text"] {
@@ -173,6 +164,7 @@ body {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px 0 0 5px;
+    margin: 0;
 }
 
 .search-container .search-button {
@@ -227,23 +219,6 @@ body {
 
 
 /*____________________ Game_Detail.html ____________________*/
-
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-}
 
 .logo img {
     height: 50px;
